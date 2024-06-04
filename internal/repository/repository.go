@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+
 	modelRepo "github.com/dmtrybogdanov/garantex/internal/repository/rates/modelRepo"
 )
 

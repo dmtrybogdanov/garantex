@@ -3,11 +3,12 @@ package rates
 import (
 	"context"
 	"fmt"
+	"log"
+
 	sq "github.com/Masterminds/squirrel"
 	"github.com/dmtrybogdanov/garantex/internal/repository"
 	modelRepo "github.com/dmtrybogdanov/garantex/internal/repository/rates/modelRepo"
 	"github.com/jackc/pgx/v4/pgxpool"
-	"log"
 )
 
 type repo struct {

@@ -13,8 +13,7 @@ import (
 )
 
 const (
-	apiURL       = "https://garantex.org/api/v2/depth"
-	currencyPair = "usdtrub"
+	apiURL = "https://garantex.org/api/v2/depth"
 )
 
 type Order struct {

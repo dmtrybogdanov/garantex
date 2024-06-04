@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+
 	"github.com/dmtrybogdanov/garantex/internal/repository/rates/modelRepo"
 )
 
