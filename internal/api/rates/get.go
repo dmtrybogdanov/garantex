@@ -4,11 +4,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
+	"net/http"
+
 	"github.com/dmtrybogdanov/garantex/internal/converter"
 	"github.com/dmtrybogdanov/garantex/internal/repository/rates/modelRepo"
 	"github.com/dmtrybogdanov/garantex/pkg/rates_v1"
-	"log"
-	"net/http"
 )
 
 const (

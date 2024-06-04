@@ -3,6 +3,9 @@ package main
 import (
 	"context"
 	"flag"
+	"log"
+	"net"
+
 	ratesAPI "github.com/dmtrybogdanov/garantex/internal/api/rates"
 	"github.com/dmtrybogdanov/garantex/internal/config"
 	rates2 "github.com/dmtrybogdanov/garantex/internal/repository/rates"
@@ -11,8 +14,6 @@ import (
 	"github.com/jackc/pgx/v4/pgxpool"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"log"
-	"net"
 )
 
 var configPath string
