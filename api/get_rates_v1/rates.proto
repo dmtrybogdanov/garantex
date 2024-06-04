@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package rates_v1;
+
+option go_package = "github.com/dmtrybogdanov/garantex/pkg/rates_v1;rates_v1";
+
+service RatesV1 {
+  rpc Get(GetRequest) returns (GetResponse);
+}
+
+message GetRequest {
+  string market = 1;
+}
+
+message Order {
+  string price = 1;
+  string volume = 2;
+  string amount = 3;
+  string factor = 4;
+  string type = 5;
+}
+
+message GetResponse {
+  int64 timestamp = 1;
+  repeated Order asks = 2;
+  repeated Order bids = 3;
+}
