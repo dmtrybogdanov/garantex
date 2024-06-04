@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"github.com/dmtrybogdanov/garantex/internal/tracing"
 	"log"
 	"net"
 
@@ -11,6 +12,8 @@ import (
 	rates2 "github.com/dmtrybogdanov/garantex/internal/repository/rates"
 	"github.com/dmtrybogdanov/garantex/internal/service/rates"
 	"github.com/dmtrybogdanov/garantex/pkg/rates_v1"
+	"github.com/gofiber/contrib/otelfiber"
+	fiber "github.com/gofiber/fiber/v2"
 	"github.com/jackc/pgx/v4/pgxpool"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -23,10 +26,17 @@ func init() {
 }
 
 func main() {
+	_, err := tracing.InitTracer("http://localhost:14268/api/traces", "Rates Service")
+	if err != nil {
+		log.Fatal("init tracer", err)
+	}
+	app := fiber.New()
+	app.Use(otelfiber.Middleware())
+
 	flag.Parse()
 	ctx := context.Background()
 
-	err := config.Load(configPath)
+	err = config.Load(configPath)
 	if err != nil {
 		log.Fatalf("failed to load config: %v", err)
 	}
